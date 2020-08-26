@@ -3,11 +3,11 @@ import axios from 'axios';
 import NasaInfo from './NASACard';
 
 function CardData(){
-    const [nasaInfo, setNasaInfo] = useState();
+    const [nasaInfo, setNasaInfo] = useState({});
 
     useEffect(() => {
         axios
-            .get('https://apod.nasa.gov/apod/astropix.html')
+            .get('https://api.nasa.gov/planetary/apod?api_key=9to3U6zTQcASqn4LlweU2ctshAnuktEXvlb9ZgYG&date=2020-08-18')
             .then(res => {
                 console.log(res.data);
                 setNasaInfo(res.data)
@@ -20,7 +20,7 @@ function CardData(){
 
     return (
         <div>
-            {/* {<NasaInfo key={nasaInfo.data} title={nasaInfo.title} info={nasaInfo.explanation} image={nasaInfo.hdurl}/>} */}
+           { <NasaInfo key={nasaInfo.data} title={nasaInfo.title} date={nasaInfo.date} info={nasaInfo.explanation} image={nasaInfo.url}/> }
         </div>
     )
 }
